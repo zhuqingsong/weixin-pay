@@ -1,0 +1,152 @@
+<% include activetop.html %>
+	<body id="_body">
+			<button class="BTN">支付</button>
+			<div class="swiper-container">
+			    <div class="swiper-wrapper">
+			    		<div class="swiper-slide"><img src="/active/image/00.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/0.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/1.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/2.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/3.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/4.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/5.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/6.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/7.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/8.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/9.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/10.jpg"></div>
+			        <div class="swiper-slide"><img src="/active/image/11.jpg"></div>
+							<div class="swiper-slide"><img src="/active/image/12.jpg"></div>
+			        <div class="swiper-slide inp">
+			        	<input class="in-box" id="inputUserName" type="text"  placeholder="请输入你的名字" />
+			        	<button class="in-box in-btn">助力中医传承</button>
+			        </div>
+			    </div>
+
+			    <!-- 如果需要导航按钮 -->
+			    <!-- <div class="swiper-button-prev"></div>
+			    <div class="swiper-button-next"></div> -->
+
+			</div>
+
+
+		<div class="alertMaks">
+					<div class="mask"></div>
+					<div class="alertbox">
+							<p class="p-tit">恭喜您助力成功!</p>
+							<p class="p-content">海报正在生成</p>
+							<p class="p-content">长按保存分享到朋友圈</p>
+							<p class="p-content">助力中医传承</p>
+							<p cass="p-content"><a href="javascript:void(0)" class="btn">确定</a></p>
+					</div>
+		</div>
+		 <div class="sp-music runload s"></div>
+		<div class="arrow bounce"></div>
+		<audio src="/active/music/m1.mp3" id="ado" loop ></audio>
+	</body>
+	<script src="/javascripts/jquery.cookie.js"></script>
+	<script src="/active/js/swiper.min.js"></script>
+	<script src="/javascripts/wxconfig.js"></script>
+	<script src="/javascripts/bm.js"></script>
+	<script type="text/javascript">
+		 $.cookie('headimgurl','<%- headimgurl %>');
+		 $.cookie('nickname','<%- nickname %>');
+
+
+		function playORPaused(){
+					var audio = document.getElementById("ado");
+					if(audio.paused){
+							audio.play();
+							$(".sp-music").addClass("runload s").removeClass('p');
+							return false;
+					}
+					audio.pause();
+					$(".sp-music").addClass("p").removeClass('runload s');
+		}
+
+
+		function getByteLen(val) {
+            var len = 0;
+            for (var i = 0; i < val.length; i++) {
+                 var a = val.charAt(i);
+                 if (a.match(/[^\x00-\xff]/ig) != null)
+                {
+                    len += 2;
+                }
+                else
+                {
+                    len += 1;
+                }
+            }
+            return len;
+    }
+
+		$(function () {
+		   var mySwiper = new Swiper ('.swiper-container', {
+				 		direction : 'vertical',
+				 		onSlideChangeStart : function(swiper){
+						  // alert( $(window).height() );
+									if(swiper.activeIndex==14){
+											$(".arrow").hide()
+									}else{
+											$(".arrow").show()
+									}
+						 }
+			  })
+
+					$(".sp-music").click(function(event) {
+						/* Act on the event */
+							playORPaused();
+					});
+			    wx.ready(function() {
+							playORPaused();
+					})
+
+			var vle="";
+			// $(".in-btn").click(function(event) {
+			// 		 vle = $("#inputUserName").val();
+			// 				if($.trim(vle)==""){
+			// 						alert("名字不能为空哦");
+			// 				}else{
+			//
+			// 						var vlen = getByteLen(vle);
+			// 						if(vlen>8){
+			// 							 alert("名字不能超过4个字");
+			// 							 return false;
+			// 						}
+			// 					  $(".alertMaks").show();
+			// 				}
+			// });
+
+			// $("a.btn").click(function(event) {
+			// 	/* Act on the event */
+			// 	$.ajax({
+			// 			url: '/setPeople',
+			// 			type: 'post',
+			// 			dataType: 'json',
+			// 			data: {},
+			// 			success:function(data, textStatus, jqXHR){
+			// 						if(data.code==200){
+			// 								location.href="/active?Usname=" + vle;
+			// 						}
+			// 			},
+			// 			error:function(XMLHttpRequest, textStatus, errorThrown){
+			// 			}
+			// 	})
+			// });
+
+
+			wxInit();
+			var rom = "<%- rom %>";
+			var url ="http://bm.eyexing.com/"
+			var title = "绵延5000年的中医技艺，需要你来传承";
+			var img = "http://bm.eyexing.com/active/image/header/"+rom+".jpg";
+			var desc ="点击加入中医人圈子，领取中医名家书籍";
+			wxshare(url,title,img);
+			wxsharefriend(url,title,desc,img);
+			wxshareQQ(url,title,desc,img);
+
+
+})
+	</script>
+	</html>

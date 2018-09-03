@@ -1,0 +1,34 @@
+<% include sh_top.html %>
+<body>
+	<div class="sh-containter" id="gameBox">
+
+	</div>
+</body>
+<script id="gameTmpl" type="text/tmpl">
+	<div class="subject-box">
+      <div class="sh-time" id="Time">30</div>
+      <div class="sh-tit">[EQ]、[TITLE]</div>
+			<div class="sh-list">
+    			<ul>
+        			<li><span class="st"></span>A、[ONE]</li>
+        			<li><span class="st"></span>B、[TWO]</li>
+              <li><span class="st"></span>C、[THREE]</li>
+              <li><span class="st"></span>D、[FOUR]</li>
+    			</ul>
+			</div>
+	</div>
+	</div>
+</script>
+<script src="/javascripts/sh_games.js"></script>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+	wxInit();
+	var url ='http://bm.eyexing.com/sh';
+	var title = " 我正在挑战伤寒论，邀你来战！";
+	var img = 'http://bm.eyexing.com/active/sh/share_header.jpg'
+	var desc ="通关即可获得小柴胡汤免费学习资格";
+	wxshare(url,title,img);
+	wxsharefriend(url,title,desc,img);
+	wxshareQQ(url,title,desc,img);
+</script>
+</html>

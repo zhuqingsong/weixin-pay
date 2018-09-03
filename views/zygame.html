@@ -1,0 +1,18 @@
+<% include top.html %>
+<body>
+      <div class="containter bg2">
+          <a href="/subject" class="games_start"></a>
+      </div>
+</body>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+    	wxInit();
+    	var url ='http://bm.eyexing.com/zygame';
+    	var title = "春游踏青识本草 挑战全民小药王";
+    	var img = 'http://bm.eyexing.com/img/chat.jpg'
+    	var desc ="邀你来战";
+    	wxshare(url,title,img);
+    	wxsharefriend(url,title,desc,img);
+    	wxshareQQ(url,title,desc,img);
+</script>
+</html>

@@ -1,0 +1,38 @@
+<% include top.html %>
+<body>
+    <div class="banner"><img src="/active/sbxt/sbxt.jpg" alt=""></div>
+    <div class="desc">
+      <p>欢迎来到诵明学院《肾病》学堂!</p>
+      <p>本课堂:</p>
+      <p>A、特邀全国肾病学术带头人、北京中医药大学肖相如教授，亲传40年肾病临床经验</p>
+      <p>原价399元，今日显示免费，点击下方 “立马加入”，听课学治疗肾病的技术!</p>
+    </div>
+    <button class="btn">更新二维码</button>
+    <script>
+          $(function(){
+              var count=0,hander=null;
+              if(count > 0  && hander!=null){
+                    alert("不要那木快替换嘛!");
+                    return false;
+              }
+              $(".btn").click(function(){
+                $.when(ajax({},"/active/updatecode")).done(function(obje){
+                    if(obje.code==1){
+                        alert(obje.msg)
+                      hander = setInterval(function(){
+                            ++count;
+                            if(count > 30){
+                                clearInterval(hander);
+                                count=0;
+                            }
+                      },1000);
+                    }else{
+                        alert(obje.msg)
+                    }
+                })
+              })
+          })
+    </script>
+    <link rel="stylesheet" href="/active/css/activepublic.css" />
+</body>
+</html>

@@ -1,0 +1,33 @@
+<% include sh_top.html %>
+<body>
+    <div class="sh-index">
+
+
+    <a href="/active/sh_subject_question?343" class="sh-index-st"></a>
+
+    </div>
+    <i class='sh-dialog'></i>
+</body>
+<script src="/javascripts/jquery.cookie.js"></script>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+       $.cookie('openid', '<%- openid %>',{ expires: 7, path: '/' });
+      var f = _getParam('f');
+      if(f!='' && f!=undefined && f!=null){
+        $(".sh-dialog").show();
+        setTimeout(function(){
+          $(".sh-dialog").hide();
+        },2000);
+      }
+      var time = Number(new Date());
+      $(".sh-index-st").attr("href","/active/sh_subject_question?t="+time);
+      wxInit();
+      var url ='http://bm.eyexing.com/sh';
+      var title = " 我正在挑战伤寒论，邀你来战！";
+      var img = 'http://bm.eyexing.com/active/sh/share_header.jpg'
+      var desc ="通关即可获得小柴胡汤免费学习资格";
+      wxshare(url,title,img);
+      wxsharefriend(url,title,desc,img);
+      wxshareQQ(url,title,desc,img);
+</script>
+</html>

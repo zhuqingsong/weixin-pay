@@ -1,0 +1,31 @@
+<% include top.html %>
+<body>
+    <div class="banner"><img src="/active/sbxt/sbxt.jpg" alt=""></div>
+    <div class="desc">
+      <p>欢迎来到诵明书院《肾病》课堂</p>
+      <p>本课堂:</p>
+      <p>特邀中国中医科学院首位肾病学博士、40年肾病临床经验的北京中医药大学肖相如教授主讲</p>
+      <p>点击下方“立即入群”，原价299元的课程，今日限时免费。</p>
+    </div>
+    <a class="btn" href="javascript:void(0)">立即入群</a>
+    <div class="alertMaks">
+          <!-- <img src="/active/sbxt/<%=img %>" alt=""> -->
+          <div class="mask"></div>
+          <div class="alertbox">
+              <!-- <p class="p-tit"><%=q_name %></p> -->
+              <p class="p-content"><img src="/active/sbxt/<%=img %>" alt=""></p>
+          </div>
+    </div>
+    <script>
+          $(function(){
+              $(".btn").click(function(){
+                $(".alertMaks").show();
+              })
+              $(".mask").click(function(){
+                $(".alertMaks").hide();
+              })
+          })
+    </script>
+    <link rel="stylesheet" href="/active/css/activepublic.css" />
+</body>
+</html>

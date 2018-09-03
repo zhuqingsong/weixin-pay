@@ -1,0 +1,74 @@
+<% include top.html %>
+<body>
+	<div class="containter bg1">
+
+	</div>
+	<div class="add-code">
+		<div class="add-doctor"></div>
+		<div class="share-code"><img src="/img/addoctor.jpg" alt=""><i class="share-close"></i></div>
+	</div>
+</body>
+<script id="doctorTmpl" type="text/tmpl">
+	<div class="doctor-header">
+			<img src="img/[DOCTOR]" alt="">
+	</div>
+	<div class="doctor-desc">
+		<img src="img/[DESC]" alt="">
+		<span class="bfb [PS]">[BFB]</span>
+	</div>
+	<div class="share-btn">
+		<a href="javascript:void(0)" class="bg1" onclick="sharedoctor()"> 传播中医 </a>
+		<a href="/zygame" class="bg2">再玩一次</a>
+		<a href="javascript:void(0)" class="bg5" onclick="addoctor()">加入中医圈子</a>
+	</div>
+</script>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+function getRandomNum(under, over){
+		switch(arguments.length) {
+				case 1:
+						return parseInt(Math.random() * under + 1);
+				case 2:
+						return parseInt(Math.random() * (over - under + 1) + under);
+				default:
+						return 0;
+		}
+}
+	var number ="<%- data %>";
+	var title = "";
+	var data={"DOCTOR":"","DESC":""};
+	var	q = _getParam("q");
+	if(q>3 && q<=9){
+		var bfb = q>3 && q<=5 ? getRandomNum(50,60) : q>5 && q<=7 ? getRandomNum(60,70):q>7 && q<=9 ? getRandomNum(70,90):"";
+		data.BFB = bfb + '%';
+		data.DOCTOR="zy_icon.png";
+		data.DESC="t1.png";
+		data.PS = 'l2';
+		title = "我获得第" +number + "位小药童称号";
+	}
+	if(q>=10){
+		data.BFB = "98%";
+		data.DOCTOR="xys_icon.png";
+		data.DESC="t11.png";
+		data.PS = 'l1';
+		title = "我获得第" +number + "位小药王称号";
+	}
+	console.log(data);
+	var tmpl = $('#doctorTmpl').html(), htmls = [];
+	var html = tmpl.replace(/\[([^\[\]]+)\]/g, function(ct, $1){
+		return data[$1];
+	});
+	htmls.push(html);
+	$('.containter').html(htmls.join(""));
+	// if(q<=9){
+	// 	$(".bfb").show();
+	// }
+	wxInit();
+	var url ='http://bm.eyexing.com/zygame';
+	var img = 'http://bm.eyexing.com/img/'+data.DOCTOR;
+	var desc ="春游踏青识本草 挑战全民小药王 ";
+	wxshare(url,title,img,q,number);
+	wxsharefriend(url,title,desc,img,q,number);
+	wxshareQQ(url,title,desc,img,q,number);
+</script>
+</html>

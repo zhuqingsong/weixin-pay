@@ -1,0 +1,302 @@
+.banner{
+    width:100%;
+    height:4.7rem;
+}
+.banner img{
+  width:100%;
+  height:100%;
+}
+
+.desc{
+  padding:.4rem .3rem;
+}
+.desc  p{
+ font-size:.3rem;
+ text-align:left;
+ color:#000;
+ line-height:.5rem;
+}
+.btn{
+width:3.5rem;
+height:1rem;
+background-color:#3da8dc;
+line-height:1rem;
+border-radius:.1rem;
+font-size:.34rem;
+color:#fff;
+text-align:center;
+border:none;
+margin:1rem auto 0;
+letter-spacing:.2rem;
+display:block;
+text-align: center;
+}
+
+.alertMaks{
+   width:100%;
+   height:100%;
+   position:absolute;
+   left:0;
+   top:0;
+   display:none;
+}
+.alertMaks img{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.mask{
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:1;
+    background-color:#000;
+    opacity: .6;
+}
+.alertbox{
+  width:90%;
+  height:auto;
+  overflow: hidden;
+  position:absolute;
+  z-index:11;
+  top:25%;
+  left:5%;
+  background-color:#fff;
+  padding:.3rem .3rem .5rem;
+  font-family: '宋体';
+}
+
+.alertbox .p-tit{
+    height:1.36rem;
+    padding-left:1.8rem;
+    padding-top:.4rem;
+    padding-bottom:.4rem;
+    color:#000;
+    text-align:left;
+    font-size:.3rem;
+    overflow:hidden;
+    background:url(../sbxt/team.jpg) no-repeat;
+    background-size:auto 100%;
+}
+.alertbox .p-content{
+    padding:.4rem;
+}
+
+.alertbox .p-content img{
+  width:100%;
+  height:auto;
+}
+
+
+/*伤寒论*/
+.sh-index{
+  width:100%;
+  height:100%;
+  background:url(../sh/sh_s.jpg) no-repeat;
+  background-size:100% 100%;
+}
+
+
+.sh-xxr{
+  width:100%;
+  height:100%;
+}
+.sh-xxr img{
+  width:100%;
+  height:100%;
+}
+.sh-end{
+  width:100%;
+  height:100%;
+  background:url(../sh/sh_e.jpg) no-repeat;
+  background-size:100% 100%;
+}
+
+.sh-end-box{
+   padding-top:7.5rem;
+   overflow:hidden;
+}
+
+.sh-end-box .mh{
+    width:4.06rem;
+    height:1.57rem;
+    margin:0 auto .35rem;
+    display:block;
+}
+
+.sh-end-box .mh img{
+  width:100%;
+  height:100%;
+}
+
+
+.sh-index-st{
+  width:4.03rem;
+  height:2.17rem;
+  background:url(../sh/run.png) no-repeat;
+  background-size:100% 100%;
+  position:absolute;
+  left:50%;
+  margin-left:-2.02rem;
+  bottom:1rem;
+  display:block;
+}
+
+.sh-containter{
+  width:100%;
+  height:100%;
+  background:url(../sh/sh_qe.jpg) no-repeat;
+  background-size:100% 100%;
+}
+
+.sh-containter .sh-time{
+  padding-top:.96rem;
+  height:1.26rem;
+  line-height:.3rem;
+  background:url(../sh/clock.gif) no-repeat center top;
+  background-size:.76rem auto;
+  font-size:.36rem;
+  text-align:center;
+  color:#f66666;
+}
+
+.subject-box{
+  overflow:hidden;
+  padding:.85rem .46rem;
+}
+
+
+
+.subject-box .sh-tit{
+  font-size:.32rem;
+  color:#1d1d1d;
+  line-height:.45rem;
+  margin-top:.45rem;
+}
+
+
+.sh-list{
+  padding:1.45rem .45rem  0;
+}
+
+.sh-list ul li{
+  padding-left:.9rem;
+  font-size:.32rem;
+  min-height:.5rem;
+  line-height:.5rem;
+  color:#1d1d1d;
+  position:relative;
+  margin-bottom:.45rem;
+}
+
+.sh-list ul li .st{
+  width:.5rem;
+  height:.5rem;
+  position:absolute;
+  left:0;
+  top:0;
+  border:1px solid #e5c37d;
+  display:block;
+}
+
+.sh-list ul li i.f{
+  width:.46rem;
+  height:.59rem;
+  background:url(../sh/false.png) no-repeat;
+  background-size:100% 100%;
+  position:absolute;
+  left:0;
+  top:0;
+  display:block;
+  font-style: normal;
+}
+
+.sh-list ul li i.t{
+    width:.6rem;
+    height:.5rem;
+    background:url(../sh/true.png) no-repeat;
+    background-size:100% 100%;
+    position:absolute;
+    left:0;
+    top:0;
+    display:block;
+    font-style: normal;
+}
+
+.err-container{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.err-container.bg1{
+  background:url(../sh/sh_error.jpg) no-repeat;
+  background-size:100% 100%;
+}
+
+.err-over{
+   padding:3.8rem .5rem 0;
+   font-size:.48rem;
+   line-height:.64rem;
+   color:#000;
+   text-align: center;
+}
+.err-over em{
+  font-style: normal;
+  color:#f78805;
+}
+ .err-btn{
+  width:4.06rem;
+  height:1.57rem;
+  margin-top:2rem;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  background:url(/active/sh/reset.png) no-repeat;
+  background-size:100% 100%;
+}
+ .err-btn img{
+   width:100%;
+   height:100%;
+ }
+.err-btn-mr{
+  width:3.6rem;
+  height:1.1rem;
+  margin:.3rem auto 0;
+  display:block;
+  background:url(/active/sh/pass.gif) no-repeat;
+  background-size:100% 100%;
+}
+.err-btn-mr img{
+  width:100%;
+  height:100%;
+}
+
+ .share-friend{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    background:url(../../images/share_bg.png) no-repeat;
+    background-size:100% 100%;
+    opacity: .7;
+}
+/*  分享成功后 */
+.sh-dialog {
+  font-style:normal;
+  display:none;
+  position:fixed;
+  width:3.78rem;
+  height:1.2rem;
+  left:50%;
+  top:50%;
+  margin-left:-1.89rem;
+  margin-top:-.6rem;
+  background:url(../sh/st.png) no-repeat;
+  background-size:100% 100%;
+  z-index:111;
+}

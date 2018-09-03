@@ -1,0 +1,28 @@
+<% include sh_top.html %>
+<body>
+	<div class="err-container bg1">
+		<div class="err-over">
+          <img src="/active/sh/noppor.png" alt="">
+		</div>
+		<a class="err-btn"> <img src="/active/sh/invitation.png" alt="">	</a>
+	</div>
+	<div class="share-friend">	</div>
+</body>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+	wxInit();
+	var url ='http://bm.eyexing.com/sh';
+	var title = " 我正在挑战伤寒论，邀你来战！";
+	var img = 'http://bm.eyexing.com/active/sh/share_header.jpg'
+	var desc ="通关即可获得小柴胡汤免费学习资格";
+	wxshare(url,title,img);
+	wxsharefriend(url,title,desc,img);
+	wxshareQQ(url,title,desc,img);
+  $("a.err-btn").click(function() {
+      $(".share-friend").show();
+  });
+  $(".share-friend").click(function(event) {
+      $(this).hide();
+  });
+</script>
+</html>

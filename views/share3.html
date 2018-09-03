@@ -1,0 +1,28 @@
+<% include top.html %>
+<body>
+	<div class="containter bg1">
+		<div class="result-over">
+			<img src="img/t111.png" alt="">
+		</div>
+		<div class="share-btn">
+			<a href="/zygame" class="bg4">我不服 再玩一次</a>
+			<a href="javascript:void(0)" class="bg5" onclick="addoctor()">加入中医圈子</a>
+		</div>
+	</div>
+	<div class="add-code">
+		<div class="add-doctor"></div>
+		<div class="share-code"><img src="/img/addoctor.jpg" alt=""><i class="share-close"></i></div>
+	</div>
+</body>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+	wxInit();
+	var url ='http://bm.eyexing.com/zygame';
+	var title = "春游踏青识本草 挑战全民小药王 ";
+	var img = 'http://bm.eyexing.com/img/chat.jpg'
+	var desc ="邀你来战";
+	wxshare(url,title,img);
+	wxsharefriend(url,title,desc,img);
+	wxshareQQ(url,title,desc,img);
+</script>
+</html>

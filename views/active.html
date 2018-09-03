@@ -1,0 +1,111 @@
+<% include activetop.html %>
+<style>
+    body img {
+      width:100%;
+      height:100%;
+      display:block;
+    }
+</style>
+<body>
+<section class="main-container header">
+    	<span class="header-box l1"><img src="<%- doctorheader %>"></span>
+    	<span class="header-box l2"><img src="<%- headimgurl %>"></span>
+
+      <span class="name-box lf1"><%- doctorname %></span>
+      <span class="name-box lf2"><%- nickname %></span>
+       <!-- <footer class="footer-center">
+        <button class="btn-share" id="btnShare">截&nbsp;图</button>
+    </footer> -->
+
+       <p class="ms-p b2">我是第<%- count %>位参与者</p>
+       <p class="ms-p b1">邀你扫码&nbsp;&nbsp;&nbsp;&nbsp;助力中医</p>
+</section>
+<img src="/active/image/code.jpg" alt="qrcode"; class="code" />
+</body>
+<script src="/active/js/html2canvas.js"></script>
+<script src="/active/js/canvas2image.js"></script>
+<script>
+
+
+function jq(selector) {
+        return document.querySelector(selector);
+    }
+    var main = {
+        init:function(){
+            main.setListener();
+        },
+        //设置监听事件
+        setListener:function(){
+            var btnShare = document.getElementById("btnShare");
+            //btnShare.onclick = function(){
+              setTimeout(function(){
+                main.html2Canvas();
+              },500)
+            //}
+        },
+        //获取像素密度
+        getPixelRatio:function(context){
+            var backingStore = context.backingStorePixelRatio ||
+                    context.webkitBackingStorePixelRatio ||
+                    context.mozBackingStorePixelRatio ||
+                    context.msBackingStorePixelRatio ||
+                    context.oBackingStorePixelRatio ||
+                    context.backingStorePixelRatio || 1;
+            return (window.devicePixelRatio || 1) / backingStore;
+        },
+        //绘制dom 元素，生成截图canvas
+        html2Canvas: function () {
+            var shareContent = jq(".main-container");// 需要绘制的部分的 (原生）dom 对象 ，注意容器的宽度不要使用百分比，使用固定宽度，避免缩放问题
+            var width = window.innerWidth;  // 获取(原生）dom 宽度
+            var height = window.innerHeight; // 获取(原生）dom 高
+            var offsetTop = shareContent.offsetTop;  //元素距离顶部的偏移量
+            var scale = 2;
+            var canvas = document.createElement('canvas');  //创建canvas 对象
+            var context = canvas.getContext('2d');
+            //var scaleBy = main.getPixelRatio(context);  //获取像素密度的方法 (也可以采用自定义缩放比例)
+            canvas.width = width *  scale ;   //这里 由于绘制的dom 为固定宽度，居中，所以没有偏移
+            canvas.height = height * scale;  // 注意高度问题，由于顶部有个距离所以要加上顶部的距离，解决图像高度偏移问题
+            context.scale(scale, scale);
+
+            var opts = {
+                scale:scale,
+                allowTaint:true,//允许加载跨域的图片
+                tainttest:false, //检测每张图片都已经加载完成
+                //scale:scaleBy, // 添加的scale 参数
+                canvas:canvas, //自定义 canvas
+                logging: true, //日志开关，发布的时候记得改成false
+                width:width, //dom 原始宽度
+                height:height, //dom 原始高度
+                onrendered: function(canvas) {
+                      var conx = canvas.getContext('2d');
+                      var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+                      var base64 = canvas.toDataURL();
+                    //  var img = "<img src='"+base64+"'  />";
+                      var body = jq(".main-container");
+                      $(".main-container").html(img);
+                      $(".main-container").removeClass('header');
+                      $(img).css({
+                        "width": canvas.width / 2 + "px",
+                        "height": canvas.height / 2 + "px",
+                      })
+                 }
+            };
+            html2canvas(shareContent, opts);
+        }
+    };
+
+    //最后运行代码
+    main.init();
+
+    wxInit();
+    var rom = "<%- rom %>";
+    var url ='http://bm.eyexing.com/';
+    var title = "绵延5000年的中医技艺，需要你来传承";
+    var img = 'http://bm.eyexing.com/active/image/header/'+rom+'.jpg';
+    var desc ="点击加入中医人圈子，领取中医名家书籍";
+    wxshare(url,title,img);
+    wxsharefriend(url,title,desc,img);
+    wxshareQQ(url,title,desc,img);
+
+</script>
+</html>

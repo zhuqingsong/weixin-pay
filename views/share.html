@@ -1,0 +1,48 @@
+<% include top.html %>
+<body>
+	<div class="containter bg1">
+
+	</div>
+</body>
+<script id="doctorTmpl" type="text/tmpl">
+	<div class="doctor-header">
+			<img src="img/[DOCTOR]" alt="">
+		</div>
+		<div class="doctor-title">
+			<img src="img/[DESC]" alt="">
+		</div>
+		<div class="share-btn">
+			<a href="http://mp.weixin.qq.com/s?__biz=MzI1NjEwNzY2Mg==&tempkey=biy1Xg3WH18hJsQL9Cbe6mpEfCmrL0etUlOfF0vrstvjeWAwwWmEjm9KxNMDriwMEr2V95fcVUUKL66HTrP18VWBl4h6am3qzDy4ahH%2B2XODDFMQOTo9PnBtbjLE%2Fu4gNGE3c8qM3opyUwcsFbgXsQ%3D%3D&chksm=7229cd46455e44502ab1de8fefc3bcb1c0ce27c7544c400883a617503ba3715ef7fb305e6482&mpshare=1&scene=1&srcid=0222fNkpqTWewnj3nx8D1sdS#wechat_redirect" class="bg1"></a>
+			<a href="/zygame" class="bg2"></a>
+			<a href="javascript:void(0)" class="bg5" onclick="sharedoctor()"></a>
+		</div>
+</script>
+<script src="/javascripts/wxpay.js"></script>
+<script>
+	var data={"DOCTOR":"","DESC":""};
+	var	q = _getParam("q");
+	if(q>3 && q<=9){
+		data.DOCTOR="zy_icon.png";
+		data.DESC="t2.png";
+	}
+	if(q>=10){
+		data.DOCTOR="xys_icon.png";
+		data.DESC="t22.png";
+	}
+	console.log(data);
+	var tmpl = $('#doctorTmpl').html(), htmls = [];
+	var html = tmpl.replace(/\[([^\[\]]+)\]/g, function(ct, $1){
+		return data[$1];
+	});
+	htmls.push(html);
+	$('.containter').html(htmls.join(""));
+	wxInit();
+	var url ='http://bm.eyexing.com/zygame';
+	var img = 'http://bm.eyexing.com/img/'+data.DOCTOR;
+	var title = "全民认草药,挑战小药王,期待你的挑战.";
+	var desc ="";
+	wxshare(url,title,img,q);
+	wxsharefriend(url,title,desc,img,q);
+	wxshareQQ(url,title,desc,img,q);
+</script>
+</html>
