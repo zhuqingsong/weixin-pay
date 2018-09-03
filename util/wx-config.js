@@ -6,15 +6,15 @@ exports.wxsendmsg = function(req){
 
 }
 
-exports.appid="wx157bfa6296f74e9f";
+exports.appid="";
 
-exports.wxmchkey="1366672102";  //商户ID
+exports.wxmchkey="";  //商户ID
 
-exports.host ="http://bm.eyexing.com/";
+exports.host ="";
 
-exports.appsecret="c4902748259c3860eceec735c776d351";
+exports.appsecret="";
 
-exports.wxkey = "ae2d6b7167d62b74589fd8fbc73ca2c3";
+exports.wxkey = "";
 
 exports.AuthToken="https://api.weixin.qq.com/sns/oauth2/access_token?grant_type=authorization_code";
 

@@ -4,10 +4,10 @@
  */
  var mysql = require("mysql");
  var pool = mysql.createPool({
-     host:"zqsdoctorapp.mysql.rds.aliyuncs.com",
-     user:"zqs_admin",
-     password:"zqs456ZQS321",
-     database:"my_admin"
+     host:"",
+     user:"",
+     password:"",
+     database:""
  });
  function query(sql){
      var p = new Promise(function(resolve, reject){
